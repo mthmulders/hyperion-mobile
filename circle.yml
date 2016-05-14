@@ -9,5 +9,7 @@ test:
         parallel: true
     - circle-android wait-for-boot
   override:
+    - TERM="dumb" ./gradlew connectedAndroidTest
+    - cp -r app/build/outputs $CIRCLE_ARTIFACTS
     - TERM="dumb" ./gradlew assembleRelease
     - cp -r app/build/outputs $CIRCLE_ARTIFACTS
